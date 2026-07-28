@@ -25,8 +25,9 @@ A modern and responsive portfolio website built to showcase the creative work, s
 
 Developed by **Emma Dave (Alamzy)**
 
-Portfolio: <https://emmadave.dev>
+Portfolio: <https://alamzy.vercel.app>
 GitHub: <https://github.com/emmadave1>
+Email: <alamzy.dev@gmail.com>
 
 ## License
 
