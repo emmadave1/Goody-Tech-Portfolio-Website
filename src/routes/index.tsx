@@ -28,6 +28,7 @@ import {
 } from "lucide-react";
 
 import founder from "@/assets/about-img-removebg-preview.png";
+import logo from "@/assets/logo-removebg-preview.png"
 import { PROJECTS, SERVICES, type Project, type ServiceId } from "@/lib/goody-data";
 import { useMotionPreference } from "@/hooks/use-motion-preference";
 
@@ -38,7 +39,7 @@ const AccessibilityToolbar = lazy(() =>
   import("@/components/AccessibilityToolbar").then((m) => ({ default: m.AccessibilityToolbar }))
 );
 
-const SITE_URL = "https://goodytech";
+const SITE_URL = "https://goodyprints.netlify.app";
 const SITE_TITLE = "Goody Tech — Creative Branding, Graphic Design & Premium Printing Studio";
 const SITE_DESCRIPTION =
   "Goody Tech is a creative studio crafting distinctive brand identities, striking graphic design, and premium print — banners, business cards, apparel, and mugs that help businesses stand out.";
@@ -53,7 +54,7 @@ export const Route = createFileRoute("/")({
       {
         name: "keywords",
         content:
-          "Goody Tech, branding studio, graphic design, logo design, premium printing, business cards, banners, apparel printing, brand identity",
+          "Goody Tech, graphic design, logo design, premium printing, business cards, banners, apparel printing, brand identity",
       },
       { name: "author", content: "Goody Tech" },
       { name: "robots", content: "index, follow" },
@@ -207,8 +208,14 @@ function Preloader() {
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
               className="font-display text-3xl font-semibold text-primary"
-            >
-              G
+              >
+              <div className="w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden border border-border">
+                <img
+                  src={logo}
+                  alt="Mikesome Logo"
+                  className="w-full h-full object-cover"
+                />
+              </div>
             </motion.span>
           </div>
         </div>
@@ -398,12 +405,13 @@ function Nav() {
   return (
     <header className="fixed inset-x-0 top-0 z-50">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-5 md:px-10">
-        <a href="#top" data-cursor="Home" className="flex items-center gap-2">
-          <Logo />
-          <span className="font-display text-lg font-semibold tracking-tight">
-            Goody Tech
-          </span>
-        </a>
+        <div className="w-10 h-10 md:w-18 md:h-18 rounded-full overflow-hidden border border-border">
+          <img
+            src={logo}
+            alt="goodytech Logo"
+            className="w-full h-full object-cover"
+          />
+        </div>
         <nav
           aria-label="Primary"
           className="hidden items-center gap-8 text-sm text-muted-foreground md:flex"
@@ -479,13 +487,13 @@ function Nav() {
   );
 }
 
-function Logo() {
-  return (
-    <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-primary text-primary-foreground">
-      <span className="font-display text-sm font-semibold">G</span>
-    </span>
-  );
-}
+// function Logo() {
+//   return (
+//     <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-primary text-primary-foreground">
+//       <span className="font-display text-sm font-semibold">G</span>
+//     </span>
+//   );
+// }
 
 /* --------------------------------- HERO ----------------------------------- */
 
@@ -1553,12 +1561,19 @@ function Footer() {
         <div className="mt-20 grid gap-10 border-t border-primary-soft/10 pt-12 md:grid-cols-4">
           <div>
             <div className="flex items-center gap-2">
-              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-primary text-primary-foreground">
+              {/* <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-primary text-primary-foreground">
                 <span className="font-display text-sm font-semibold">G</span>
               </span>
               <span className="font-display text-lg font-semibold">
                 Goody Tech
-              </span>
+              </span> */}
+              <div className="w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden border border-border">
+              <img
+                src={logo}
+                alt="goodytech Logo"
+                className="w-full h-full object-cover"
+              />
+            </div>
             </div>
             <p className="mt-4 max-w-xs text-sm text-primary-soft/60">
               Creative Designs. Premium Prints. Powerful Brands.
