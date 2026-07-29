@@ -28,7 +28,7 @@ import {
 } from "lucide-react";
 
 import founder from "@/assets/about-img-removebg-preview.png";
-import logo from "@/assets/logo-removebg-preview.png"
+import logo from "@/assets/goody-logo-v2.png";
 import { PROJECTS, SERVICES, type Project, type ServiceId } from "@/lib/goody-data";
 import { useMotionPreference } from "@/hooks/use-motion-preference";
 
@@ -212,7 +212,7 @@ function Preloader() {
               <div className="w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden border border-border">
                 <img
                   src={logo}
-                  alt="Mikesome Logo"
+                  alt="goodytech Logo"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -390,8 +390,6 @@ function FloatingGradients({
 }
 
 
-
-
 /* -------------------------------------------------------------------------- */
 
 function Nav() {
@@ -405,7 +403,7 @@ function Nav() {
   return (
     <header className="fixed inset-x-0 top-0 z-50">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-5 md:px-10">
-        <div className="w-10 h-10 md:w-18 md:h-18 rounded-full overflow-hidden border border-border">
+        <div className="w-18 h-18 md:w-18 md:h-18 rounded-full overflow-hidden border border-border">
           <img
             src={logo}
             alt="goodytech Logo"
@@ -1568,11 +1566,11 @@ function Footer() {
                 Goody Tech
               </span> */}
               <div className="w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden border border-border">
-              <img
-                src={logo}
-                alt="goodytech Logo"
-                className="w-full h-full object-cover"
-              />
+                <img
+                  src={logo}
+                  alt="goodytech Logo"
+                  className="w-full h-full object-cover"
+                />
             </div>
             </div>
             <p className="mt-4 max-w-xs text-sm text-primary-soft/60">
