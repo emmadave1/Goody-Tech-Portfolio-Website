@@ -659,7 +659,7 @@ function Hero() {
             <img
               src={founder}
               alt="Cutout portrait of the founder of Goody Tech"
-              width={912}
+              width={100}
               height={1104}
               loading="eager"
               decoding="async"
@@ -995,7 +995,7 @@ function ServicesSection({
                 layout: { type: "spring", damping: 26, stiffness: 220 },
               }}
               whileHover={{ y: -8 }}
-              className={`group relative flex min-h-[360px] w-[300px] shrink-0 flex-col justify-between rounded-3xl border p-7 text-left transition-colors md:w-[340px] ${
+              className={`group relative flex min-h-[280px] w-[240px] shrink-0 flex-col justify-between rounded-3xl border p-7 text-left transition-colors md:w-[280px] ${
                 isActive
                   ? "border-primary bg-primary text-primary-foreground shadow-[var(--shadow-lift)]"
                   : "border-border bg-card hover:border-primary/40"
@@ -1146,7 +1146,7 @@ function ProjectsSection({
         </div>
 
         {loading ? (
-          <div className="mt-14 grid gap-6 md:grid-cols-2">
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {Array.from({ length: Math.max(2, projects.length) }).map((_, i) => (
               <div
                 key={i}
@@ -1205,7 +1205,7 @@ function ProjectCard({
           loading="lazy"
           width={1200}
           height={900}
-          className="h-full w-full object-cover"
+          className="h-full w-full object-cover p-1"
           initial={{ scale: 1.05 }}
           whileHover={{ scale: 1.12 }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
@@ -1224,7 +1224,7 @@ function ProjectCard({
           </span>
         </div>
       </div>
-      <div className="p-6">
+      <div className="p-4">
         <p className="text-sm text-muted-foreground">{project.description}</p>
       </div>
     </motion.button>

@@ -1,10 +1,11 @@
-import brand1 from "@/assets/proj-brand-1.jpg";
-import brand2 from "@/assets/proj-brand-2.jpg";
-import graphic1 from "@/assets/proj-graphic-1.jpg";
-import graphic2 from "@/assets/proj-graphic-2.jpg";
+import brand1 from "@/assets/brand-bag-1.jpg";
+import brand2 from "@/assets/brand-logo.jpg";
+import graphic1 from "@/assets/graphics-11.jpg";
+import graphic2 from "@/assets/graphics-4.jpg";
+import graphic3 from "@/assets/graphics-10.jpg";
 import banner1 from "@/assets/proj-banner-1.jpg";
 import banner2 from "@/assets/proj-banner-2.jpg";
-import card1 from "@/assets/proj-card-1.jpg";
+import card1 from "@/assets/brand-card-1.jpg";
 import card2 from "@/assets/proj-card-2.jpg";
 import tshirt1 from "@/assets/proj-tshirt-1.jpg";
 import tshirt2 from "@/assets/proj-tshirt-2.jpg";
@@ -102,6 +103,7 @@ export const PROJECTS: Project[] = [
     images: [brand2, brand1],
     services: ["Wordmark", "Business cards"],
   },
+
   {
     id: "seagram-poster",
     service: "graphic",
@@ -122,6 +124,17 @@ export const PROJECTS: Project[] = [
     images: [graphic2, graphic1],
     services: ["Editorial design", "Layout"],
   },
+  {
+    id: "mague-editorial",
+    service: "graphic",
+    title: "Mague Magazine Spread",
+    description:
+      "Editorial layout for a long-form feature — hierarchy, rhythm, and generous white space.",
+    cover: graphic3,
+    images: [graphic3, graphic2, graphic1],
+    services: ["Editorial design", "Layout"],
+  },
+
   {
     id: "storefront-banner",
     service: "banner",
