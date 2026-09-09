@@ -56,13 +56,13 @@ export const SERVICES: Service[] = [
     description:
       "Small-batch apparel with color-accurate screen printing and soft-hand DTG on premium blanks.",
   },
-  {
-    id: "mug",
-    title: "Mug Printing",
-    short: "Ceramic & matte",
-    description:
-      "Dishwasher-safe sublimation printing on glossy and matte ceramics — sharp, durable, gift-ready.",
-  },
+  // {
+  //   id: "mug",
+  //   title: "Mug Printing",
+  //   short: "Ceramic & matte",
+  //   description:
+  //     "Dishwasher-safe sublimation printing on glossy and matte ceramics — sharp, durable, gift-ready.",
+  // },
   {
     id: "brand",
     title: "Brand Identity",
