@@ -17,7 +17,7 @@ import {
   Printer,
   CreditCard,
   Shirt,
-  Coffee,
+  // Coffee,
   Sparkles,
   X,
   Menu,
@@ -106,7 +106,7 @@ const SERVICE_ICONS: Record<
   banner: Printer,
   card: CreditCard,
   tshirt: Shirt,
-  mug: Coffee,
+  // mug: Coffee,
   brand: Sparkles,
 }
 
@@ -1401,7 +1401,7 @@ function ProjectModal({
 /* --------------------------------- FOOTER --------------------------------- */
 
 const WHATSAPP_NUMBER = '2349041634458'
-const CONTACT_EMAIL = 'hello@goodytech.co'
+const CONTACT_EMAIL = 'goodyedits90@gmail.com'
 
 function ProjectInquiryForm() {
   const [name, setName] = useState('')
@@ -1464,7 +1464,7 @@ function ProjectInquiryForm() {
             required
             value={name}
             onChange={(e) => setName(e.target.value)}
-            placeholder="Ada Lovelace"
+            placeholder="Goody Tech"
             data-cursor=""
             className="w-full rounded-xl border border-primary-soft/20 bg-transparent px-4 py-3 text-primary-soft placeholder:text-primary-soft/40 outline-none transition focus:border-primary-soft/70 focus:ring-2 focus:ring-primary-soft/20"
           />
@@ -1508,7 +1508,7 @@ function ProjectInquiryForm() {
             type="text"
             value={budget}
             onChange={(e) => setBudget(e.target.value)}
-            placeholder="$50 – $100"
+            placeholder="₦50 – ₦100"
             data-cursor=""
             className="w-full rounded-xl border border-primary-soft/20 bg-transparent px-4 py-3 text-primary-soft placeholder:text-primary-soft/40 outline-none transition focus:border-primary-soft/70 focus:ring-2 focus:ring-primary-soft/20"
           />
@@ -1664,8 +1664,8 @@ function Footer() {
             title="Contact"
             links={[
               {
-                label: 'hello@goodytech.co',
-                href: 'mailto:hello@goodytech.co',
+                label: 'goodyedits90@gmail.com',
+                href: 'mailto:goodyedits90@gmail.com',
               },
               { label: '+234 904 163 4458', href: 'tel:+234 904 163 4458' },
               { label: 'Studio · By appointment', href: '#' },

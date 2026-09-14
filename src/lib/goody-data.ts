@@ -1,23 +1,26 @@
 import brand1 from "@/assets/brand-bag-1.jpg";
 import brand2 from "@/assets/brand-logo.jpg";
+import brand3 from "@/assets/brand3.jpg";
+// import brand4 from "@/assets/brand4.jpg";
+import brand5 from "@/assets/brand6.jpg";
 import graphic1 from "@/assets/graphics-11.jpg";
 import graphic2 from "@/assets/graphics-4.jpg";
 import graphic3 from "@/assets/graphics-10.jpg";
 import banner1 from "@/assets/proj-banner-1.jpg";
-import banner2 from "@/assets/proj-banner-2.jpg";
+import banner2 from "@/assets/proj-banner-3.jpg";
 import card1 from "@/assets/brand-card-1.jpg";
-import card2 from "@/assets/proj-card-2.jpg";
-import tshirt1 from "@/assets/proj-tshirt-1.jpg";
-import tshirt2 from "@/assets/proj-tshirt-2.jpg";
-import mug1 from "@/assets/proj-mug-1.jpg";
-import mug2 from "@/assets/proj-mug-2.jpg";
+import card2 from "@/assets/card-3.jpg";
+import tshirt1 from "@/assets/tshirt-1.jpg";
+import tshirt2 from "@/assets/tshirt-3.jpg";
+// import mug1 from "@/assets/proj-mug-1.jpg";
+// import mug2 from "@/assets/proj-mug-2.jpg";
 
 export type ServiceId =
   | "graphic"
   | "banner"
   | "card"
   | "tshirt"
-  | "mug"
+  // | "mug"
   | "brand";
 
 export type Service = {
@@ -101,6 +104,36 @@ export const PROJECTS: Project[] = [
       "A quiet, editorial wordmark and card system for an architecture studio.",
     cover: brand2,
     images: [brand2, brand1],
+    services: ["Wordmark", "Business cards"],
+  },
+  {
+    id: "linden-studio",
+    service: "brand",
+    title: "Linden Studio — Wordmark",
+    description:
+      "A quiet, editorial wordmark and card system for an architecture studio.",
+    cover: brand3,
+    images: [brand3, brand2, brand1],
+    services: ["Wordmark", "Business cards"],
+  },
+  // {
+  //   id: "linden-studio",
+  //   service: "brand",
+  //   title: "Linden Studio — Wordmark",
+  //   description:
+  //     "A quiet, editorial wordmark and card system for an architecture studio.",
+  //   cover: brand4,
+  //   images: [brand4, brand3, brand2, brand1],
+  //   services: ["Wordmark", "Business cards"],
+  // },
+  {
+    id: "linden-studio",
+    service: "brand",
+    title: "Linden Studio — Wordmark",
+    description:
+      "A quiet, editorial wordmark and card system for an architecture studio.",
+    cover: brand5,
+    images: [brand5, brand3, brand2, brand1],
     services: ["Wordmark", "Business cards"],
   },
 
@@ -195,24 +228,24 @@ export const PROJECTS: Project[] = [
     images: [tshirt2, tshirt1],
     services: ["Embroidery", "Fulfillment"],
   },
-  {
-    id: "ceramic-88",
-    service: "mug",
-    title: "Ceramic 88 — Café Set",
-    description:
-      "Sublimation-printed ceramic mugs for a café house — dishwasher and microwave safe.",
-    cover: mug1,
-    images: [mug1, mug2],
-    services: ["Sublimation", "Packaging"],
-  },
-  {
-    id: "matte-black-run",
-    service: "mug",
-    title: "Matte Black Studio Run",
-    description:
-      "A limited run of matte black mugs with laser-etched logos.",
-    cover: mug2,
-    images: [mug2, mug1],
-    services: ["Laser etch", "Small batch"],
-  },
+  // {
+  //   id: "ceramic-88",
+  //   service: "mug",
+  //   title: "Ceramic 88 — Café Set",
+  //   description:
+  //     "Sublimation-printed ceramic mugs for a café house — dishwasher and microwave safe.",
+  //   cover: mug1,
+  //   images: [mug1, mug2],
+  //   services: ["Sublimation", "Packaging"],
+  // },
+  // {
+  //   id: "matte-black-run",
+  //   service: "mug",
+  //   title: "Matte Black Studio Run",
+  //   description:
+  //     "A limited run of matte black mugs with laser-etched logos.",
+  //   cover: mug2,
+  //   images: [mug2, mug1],
+  //   services: ["Laser etch", "Small batch"],
+  // },
 ];
