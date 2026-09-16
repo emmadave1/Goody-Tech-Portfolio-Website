@@ -93,7 +93,7 @@ export const Route = createFileRoute('/')({
     ],
     links: [
       { rel: 'canonical', href: SITE_URL },
-      { rel: 'preload', as: 'image', href: founder, fetchpriority: 'high' },
+      { rel: 'preload', as: 'image', href: founder, fetchPriority: 'high' },
     ],
   }),
 })
@@ -561,36 +561,6 @@ function Nav() {
 
 function Hero() {
   const ref = useRef<HTMLDivElement>(null)
-  const mx = useMotionValue(0)
-  const my = useMotionValue(0)
-  const px = useSpring(mx, { damping: 25, stiffness: 120 })
-  const py = useSpring(my, { damping: 25, stiffness: 120 })
-  const imgX = useTransform(px, (v) => v * 14)
-  const imgY = useTransform(py, (v) => v * 14)
-  const glowX = useTransform(px, (v) => v * -22)
-  const glowY = useTransform(py, (v) => v * -22)
-
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    const on = (e: MouseEvent) => {
-      const r = el.getBoundingClientRect()
-      const rx = (e.clientX - r.left) / r.width - 0.5
-      const ry = (e.clientY - r.top) / r.height - 0.5
-      mx.set(rx)
-      my.set(ry)
-    }
-    const off = () => {
-      mx.set(0)
-      my.set(0)
-    }
-    el.addEventListener('mousemove', on)
-    el.addEventListener('mouseleave', off)
-    return () => {
-      el.removeEventListener('mousemove', on)
-      el.removeEventListener('mouseleave', off)
-    }
-  }, [mx, my])
 
   const lines = [
     'Goody Tech is a creative studio for',
@@ -612,7 +582,7 @@ function Hero() {
       <div className="relative mx-auto grid max-w-7xl grid-cols-1 gap-4 px-6 pb-24 md:gap-14 md:px-10 md:pb-32 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-center lg:gap-20">
         {/* Left: Text — appears above image on mobile */}
         <div className="order-1 lg:order-1">
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -620,7 +590,7 @@ function Hero() {
           >
             <span className="h-1.5 w-1.5 rounded-full bg-primary" />
             Creative Designs · Premium Prints
-          </motion.div>
+          </motion.div> */}
 
           <div className="mb-4 font-display text-xl italic text-primary-soft md:text-2xl">
             <TypeWriter text="Hi, welcome to Goody Tech" startDelay={2.0} />
@@ -684,7 +654,6 @@ function Hero() {
           {/* Floating animated gradient backdrop */}
           <motion.div
             aria-hidden
-            style={{ x: glowX, y: glowY }}
             className="pointer-events-none absolute -inset-10 -z-10"
           >
             <motion.div
@@ -719,10 +688,7 @@ function Hero() {
               className="absolute -right-4 bottom-4 h-44 w-44 rounded-full bg-white/25 blur-3xl"
             />
           </motion.div>
-          <motion.div
-            style={{ x: imgX, y: imgY }}
-            className="relative flex justify-center"
-          >
+          <motion.div className="relative flex justify-center">
             <img
               src={founder}
               alt="Cutout portrait of the founder of Goody Tech"
@@ -859,9 +825,6 @@ function MagneticButton({
   const ref = useRef<HTMLAnchorElement>(null)
   const x = useMotionValue(0)
   const y = useMotionValue(0)
-  const sx = useSpring(x, { damping: 15, stiffness: 200 })
-  const sy = useSpring(y, { damping: 15, stiffness: 200 })
-
   useEffect(() => {
     const el = ref.current
     if (!el) return
@@ -887,7 +850,7 @@ function MagneticButton({
     <motion.a
       ref={ref}
       href={href}
-      style={{ x: sx, y: sy }}
+      style={{ x, y }}
       className="group inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-medium text-primary-foreground shadow-[var(--shadow-soft)] transition-shadow hover:shadow-[0_20px_60px_-20px_var(--color-primary)]"
       data-cursor={dataCursor}
     >
@@ -931,28 +894,7 @@ function ServicesSection({
   registerRef: (id: ServiceId, el: HTMLButtonElement | null) => void
 }) {
   const scrollRef = useRef<HTMLDivElement>(null)
-  const [paused, setPaused] = useState(false)
-
-  // Autoplay: gently scroll
-  useEffect(() => {
-    const el = scrollRef.current
-    if (!el) return
-    let raf = 0
-    let last = performance.now()
-    const tick = (t: number) => {
-      const dt = t - last
-      last = t
-      if (!paused && !showProjects) {
-        el.scrollLeft += dt * 0.03
-        if (el.scrollLeft >= el.scrollWidth - el.clientWidth - 2) {
-          el.scrollLeft = 0
-        }
-      }
-      raf = requestAnimationFrame(tick)
-    }
-    raf = requestAnimationFrame(tick)
-    return () => cancelAnimationFrame(raf)
-  }, [paused, showProjects])
+  const [, setPaused] = useState(false)
 
   // Drag
   useEffect(() => {
@@ -1026,8 +968,6 @@ function ServicesSection({
 
       <div
         ref={scrollRef}
-        onMouseEnter={() => setPaused(true)}
-        onMouseLeave={() => setPaused(false)}
         className="scrollbar-none mt-14 flex gap-6 overflow-x-auto scroll-smooth px-6 pb-6 md:px-10"
         style={{ scrollbarWidth: 'none' }}
       >
@@ -1040,21 +980,19 @@ function ServicesSection({
               ref={(el) => registerRef(s.id, el)}
               onClick={() => onSelect(s.id)}
               data-cursor="View"
-              layout
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               animate={{
                 opacity: showProjects && !isActive ? 0.35 : 1,
                 scale: isActive ? (showProjects ? 1.04 : 1.02) : 1,
-                y: 0,
               }}
               transition={{
-                duration: 0.6,
-                delay: i * 0.05,
-                layout: { type: 'spring', damping: 26, stiffness: 220 },
+                duration: 0.35,
+                delay: i * 0.04,
+                ease: 'easeOut',
               }}
-              whileHover={{ y: -8 }}
+              whileHover={{ y: -4 }}
               className={`group relative flex min-h-[280px] w-[240px] shrink-0 flex-col justify-between rounded-3xl border p-7 text-left transition-colors md:w-[280px] ${
                 isActive
                   ? 'border-primary bg-primary text-primary-foreground shadow-[var(--shadow-lift)]'
@@ -1261,9 +1199,9 @@ function ProjectCard({
       data-cursor="Open"
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.7, delay: index * 0.06 }}
-      whileHover={{ y: -6 }}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ duration: 0.4, delay: index * 0.04, ease: 'easeOut' }}
+      whileHover={{ y: -3 }}
       className="group relative overflow-hidden rounded-3xl bg-card text-left shadow-[var(--shadow-soft)] transition-shadow hover:shadow-[var(--shadow-lift)]"
     >
       <div className="relative aspect-[4/3] overflow-hidden">
@@ -1274,9 +1212,9 @@ function ProjectCard({
           width={1200}
           height={900}
           className="h-full w-full object-cover p-1"
-          initial={{ scale: 1.05 }}
-          whileHover={{ scale: 1.12 }}
-          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          initial={{ scale: 1.02 }}
+          whileHover={{ scale: 1.06 }}
+          transition={{ duration: 0.35, ease: 'easeOut' }}
         />
         <div className="absolute inset-x-4 bottom-4 flex items-center justify-between rounded-2xl bg-background/90 px-4 py-3 backdrop-blur">
           <div>
@@ -1449,10 +1387,10 @@ function ProjectInquiryForm() {
   return (
     <motion.form
       onSubmit={handleEmail}
-      initial={{ opacity: 0, y: 24 }}
+      initial={{ opacity: 0, y: 12 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-80px' }}
-      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.4, ease: 'easeOut' }}
       className="mt-12 rounded-3xl border border-primary-soft/15 bg-white/[0.04] p-6 backdrop-blur-sm md:mt-16 md:p-10"
       aria-label="Project inquiry form"
     >
@@ -1594,18 +1532,9 @@ function WhatsAppIcon({ className }: { className?: string }) {
 }
 
 function Footer() {
-  const ref = useRef<HTMLElement>(null)
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start end', 'end end'],
-  })
-  const y = useTransform(scrollYProgress, [0, 1], [80, 0])
-  const o = useTransform(scrollYProgress, [0, 1], [0.4, 1])
-
   return (
     <footer
       id="contact"
-      ref={ref}
       className="relative overflow-hidden bg-ink text-primary-soft"
     >
       <FloatingGradients variant="d" />
@@ -1613,7 +1542,7 @@ function Footer() {
 
       <div className="pointer-events-none absolute bottom-[-6%] left-1/3 h-[320px] w-[320px] rounded-full bg-white/[0.04] blur-3xl" />
       <div className="relative mx-auto max-w-7xl px-6 py-24 md:px-10 md:py-32">
-        <motion.div style={{ y, opacity: o }}>
+        <div>
           <div className="text-xs uppercase tracking-[0.25em] text-primary-soft/60">
             Let's build something memorable
           </div>
@@ -1626,7 +1555,7 @@ function Footer() {
             Tell us about the project — a brand refresh, print run, or a wild
             idea. Send it straight to our inbox or ping us on WhatsApp.
           </p>
-        </motion.div>
+        </div>
 
         <ProjectInquiryForm />
 
