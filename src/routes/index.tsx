@@ -4,9 +4,6 @@ import {
   AnimatePresence,
   motion,
   useMotionValue,
-  useScroll,
-  useSpring,
-  useTransform,
 } from 'framer-motion'
 import {
   ArrowRight,
@@ -894,7 +891,7 @@ function ServicesSection({
   registerRef: (id: ServiceId, el: HTMLButtonElement | null) => void
 }) {
   const scrollRef = useRef<HTMLDivElement>(null)
-  const [, setPaused] = useState(false)
+  // const [, setPaused] = useState(false)
 
   // Drag
   useEffect(() => {
