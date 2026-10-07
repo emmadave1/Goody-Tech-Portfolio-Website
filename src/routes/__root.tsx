@@ -8,7 +8,7 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 import { MotionConfig } from "framer-motion";
-import { useEffect, type ReactNode } from "react";
+import {type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { MotionPreferenceProvider, useMotionPreference } from "../hooks/use-motion-preference";

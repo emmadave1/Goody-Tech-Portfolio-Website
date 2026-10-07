@@ -1,10 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { lazy, Suspense, useEffect, useMemo, useRef, useState } from 'react'
-import {
-  AnimatePresence,
-  motion,
-  useMotionValue,
-} from 'framer-motion'
+import { AnimatePresence, motion, useMotionValue } from 'framer-motion'
 import {
   ArrowRight,
   ArrowUpRight,
@@ -576,7 +572,7 @@ function Hero() {
       {/* Splash of white */}
       <div className="pointer-events-none absolute -top-10 left-1/2 h-[380px] w-[380px] -translate-x-1/2 rounded-full bg-white/[0.05] blur-3xl" />
       <div className="pointer-events-none absolute right-[-8%] top-1/3 h-[280px] w-[280px] rounded-full bg-white/[0.06] blur-3xl" />
-      <div className="relative mx-auto grid max-w-7xl grid-cols-1 gap-4 px-6 pb-24 md:gap-14 md:px-10 md:pb-32 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-center lg:gap-20">
+      <div className="relative mx-auto grid max-w-7xl grid-cols-1 gap-8 px-5 pb-24 sm:px-6 md:gap-14 md:px-10 md:pb-32 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-center lg:gap-20">
         {/* Left: Text — appears above image on mobile */}
         <div className="order-1 lg:order-1">
           {/* <motion.div
@@ -646,12 +642,30 @@ function Hero() {
             ease: [0.22, 1, 0.36, 1],
             delay: 0.2,
           }}
-          className="relative order-2 mx-auto flex w-full max-w-lg -mt-10 justify-center lg:order-2 lg:mx-0 lg:ml-auto lg:mt-0 lg:max-w-xl lg:-translate-y-36"
+          className="
+            relative order-2
+            mx-auto
+            flex w-full
+            max-w-[420px]
+            justify-center
+            lg:order-2
+            lg:mx-0
+            lg:ml-auto
+            lg:max-w-xl
+            lg:-translate-y-36
+          "
         >
-          {/* Floating animated gradient backdrop */}
+          {/* Responsive animated gradient backdrop */}
           <motion.div
             aria-hidden
-            className="pointer-events-none absolute -inset-10 -z-10"
+            className="
+              pointer-events-none
+              absolute
+              -inset-6
+              -z-10
+              sm:-inset-8
+              lg:-inset-10
+            "
           >
             <motion.div
               animate={{
@@ -659,8 +673,16 @@ function Hero() {
                 scale: [1, 1.08, 1],
               }}
               transition={{
-                rotate: { duration: 22, ease: 'linear', repeat: Infinity },
-                scale: { duration: 8, ease: 'easeInOut', repeat: Infinity },
+                rotate: {
+                  duration: 22,
+                  ease: 'linear',
+                  repeat: Infinity,
+                },
+                scale: {
+                  duration: 8,
+                  ease: 'easeInOut',
+                  repeat: Infinity,
+                },
               }}
               className="absolute inset-0 rounded-[3rem] opacity-80 blur-3xl"
               style={{
@@ -668,24 +690,64 @@ function Hero() {
                   'conic-gradient(from 120deg at 50% 50%, color-mix(in oklab, var(--color-primary) 55%, transparent), color-mix(in oklab, white 30%, transparent), color-mix(in oklab, var(--color-primary) 40%, transparent), transparent 75%)',
               }}
             />
+
             <motion.div
               animate={{
                 x: [0, 24, -12, 0],
                 y: [0, -18, 14, 0],
               }}
-              transition={{ duration: 10, ease: 'easeInOut', repeat: Infinity }}
-              className="absolute -left-6 top-6 h-40 w-40 rounded-full bg-primary/40 blur-3xl"
+              transition={{
+                duration: 10,
+                ease: 'easeInOut',
+                repeat: Infinity,
+              }}
+              className="
+                absolute
+                -left-4
+                top-6
+                h-28
+                w-28
+                rounded-full
+                bg-primary/40
+                blur-3xl
+                sm:-left-6
+                sm:h-36
+                sm:w-36
+                lg:h-40
+                lg:w-40
+              "
             />
+
             <motion.div
               animate={{
                 x: [0, -20, 16, 0],
                 y: [0, 22, -10, 0],
               }}
-              transition={{ duration: 12, ease: 'easeInOut', repeat: Infinity }}
-              className="absolute -right-4 bottom-4 h-44 w-44 rounded-full bg-white/25 blur-3xl"
+              transition={{
+                duration: 12,
+                ease: 'easeInOut',
+                repeat: Infinity,
+              }}
+              className="
+                absolute
+                -right-2
+                bottom-4
+                h-32
+                w-32
+                rounded-full
+                bg-white/25
+                blur-3xl
+                sm:-right-4
+                sm:h-40
+                sm:w-40
+                lg:h-44
+                lg:w-44
+              "
             />
           </motion.div>
-          <motion.div className="relative flex justify-center">
+
+          {/* Portrait */}
+          <motion.div className="relative flex w-full justify-center">
             <img
               src={founder}
               alt="Cutout portrait of the founder of Goody Tech"
@@ -694,23 +756,24 @@ function Hero() {
               loading="eager"
               decoding="async"
               fetchPriority="high"
-              className="relative z-10 mx-auto h-auto w-[135%] max-w-none select-none object-contain drop-shadow-[0_40px_60px_rgba(0,0,0,0.55)] lg:w-full"
               draggable={false}
+              className="
+                relative
+                z-10
+                block
+                h-auto
+                w-full
+                max-w-[360px]
+                select-none
+                object-contain
+                drop-shadow-[0_30px_45px_rgba(0,0,0,0.55)]
+                sm:max-w-[420px]
+                lg:max-w-none
+                lg:w-full
+                lg:drop-shadow-[0_40px_60px_rgba(0,0,0,0.55)]
+             "
             />
           </motion.div>
-          {/* <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.2, duration: 0.8 }}
-            className="absolute -bottom-5 -left-5 hidden rounded-2xl border border-border bg-card/90 px-5 py-4 backdrop-blur md:block"
-          >
-            <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
-              Founder
-            </div>
-            <div className="mt-1 font-display text-base font-semibold text-foreground">
-              Studio-led. Craft-first.
-            </div>
-          </motion.div> */}
         </motion.div>
       </div>
 
@@ -990,7 +1053,7 @@ function ServicesSection({
                 ease: 'easeOut',
               }}
               whileHover={{ y: -4 }}
-              className={`group relative flex min-h-[280px] w-[240px] shrink-0 flex-col justify-between rounded-3xl border p-7 text-left transition-colors md:w-[280px] ${
+              className={`group relative flex min-h-[260px] w-[calc(100vw-3rem)] max-w-[280px] shrink-0 flex-col justify-between rounded-3xl border p-6 text-left transition-colors sm:min-h-[280px] sm:w-[240px] sm:p-7 md:w-[280px] ${
                 isActive
                   ? 'border-primary bg-primary text-primary-foreground shadow-[var(--shadow-lift)]'
                   : 'border-border bg-card hover:border-primary/40'
@@ -1095,86 +1158,132 @@ function ProjectsSection({
   onBack: () => void
 }) {
   const svc = SERVICES.find((s) => s.id === service)!
+
   return (
     <motion.section
       id="work"
-      initial={{ opacity: 0, y: 60, clipPath: 'inset(8% 0% 8% 0% round 32px)' }}
-      animate={{ opacity: 1, y: 0, clipPath: 'inset(0% 0% 0% 0% round 0px)' }}
-      exit={{ opacity: 0, y: 40, clipPath: 'inset(10% 0% 10% 0% round 32px)' }}
-      transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-      className="relative overflow-hidden bg-secondary/40 py-28 md:py-36"
+      initial={{
+        opacity: 0,
+        y: 60,
+        clipPath: 'inset(8% 0% 8% 0% round 32px)',
+      }}
+      animate={{
+        opacity: 1,
+        y: 0,
+        clipPath: 'inset(0% 0% 0% 0% round 0px)',
+      }}
+      exit={{
+        opacity: 0,
+        y: 40,
+        clipPath: 'inset(10% 0% 10% 0% round 32px)',
+      }}
+      transition={{
+        duration: 0.75,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      className="relative overflow-hidden bg-secondary/40 py-20 sm:py-24 md:py-32 lg:py-36"
     >
       <FloatingGradients variant="c" />
-      {/* Splash of white */}
 
-      <div className="pointer-events-none absolute -top-24 right-[-10%] h-[420px] w-[420px] rounded-full bg-white/[0.06] blur-3xl" />
-      <div className="pointer-events-none absolute bottom-[-10%] left-[-10%] h-[360px] w-[360px] rounded-full bg-white/[0.04] blur-3xl" />
+      {/* Decorative background elements */}
+      <div className="pointer-events-none absolute -right-32 -top-24 h-[280px] w-[280px] rounded-full bg-white/[0.06] blur-3xl sm:h-[360px] sm:w-[360px] md:h-[420px] md:w-[420px]" />
 
-      <div className="relative mx-auto max-w-7xl px-6 md:px-10">
-        <div className="mb-8 flex items-center justify-between gap-4">
+      <div className="pointer-events-none absolute -bottom-24 -left-24 h-[260px] w-[260px] rounded-full bg-white/[0.04] blur-3xl sm:h-[320px] sm:w-[320px] md:h-[360px] md:w-[360px]" />
+
+      <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 md:px-10">
+        {/* Top controls */}
+        <div className="mb-8 flex items-center justify-between gap-3 sm:mb-10">
           <button
             onClick={onBack}
             data-cursor="Back"
-            className="group inline-flex items-center gap-2 rounded-full border border-border bg-background/60 px-4 py-2 text-xs uppercase tracking-[0.2em] text-muted-foreground backdrop-blur transition-colors hover:border-primary/60 hover:text-primary"
+            className="group inline-flex min-h-10 items-center gap-1.5 rounded-full border border-border bg-background/60 px-3 py-2 text-[10px] uppercase tracking-[0.16em] text-muted-foreground backdrop-blur transition-colors hover:border-primary/60 hover:text-primary sm:gap-2 sm:px-4 sm:text-xs sm:tracking-[0.2em]"
           >
-            <ChevronLeft className="h-4 w-4 transition-transform group-hover:-translate-x-0.5" />
-            Back to services
+            <ChevronLeft className="h-4 w-4 shrink-0 transition-transform group-hover:-translate-x-0.5" />
+            <span className="hidden xs:inline sm:inline">Back to services</span>
+            <span className="xs:hidden">Back</span>
           </button>
-          <div className="text-xs uppercase tracking-[0.25em] text-muted-foreground">
+
+          <div className="shrink-0 text-[10px] uppercase tracking-[0.18em] text-muted-foreground sm:text-xs sm:tracking-[0.25em]">
             {projects.length} project{projects.length === 1 ? '' : 's'}
           </div>
         </div>
 
-        <div className="flex flex-wrap items-end justify-between gap-6">
-          <div>
-            <div className="mb-4 text-xs uppercase tracking-[0.25em] text-muted-foreground">
+        {/* Heading */}
+        <div className="flex flex-col gap-5 sm:gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <div className="min-w-0">
+            <div className="mb-3 text-[10px] uppercase tracking-[0.2em] text-muted-foreground sm:mb-4 sm:text-xs sm:tracking-[0.25em]">
               Featured work
             </div>
+
             <motion.h2
               key={svc.id}
-              initial={{ opacity: 0, y: 20, filter: 'blur(6px)' }}
-              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              initial={{
+                opacity: 0,
+                y: 20,
+                filter: 'blur(6px)',
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                filter: 'blur(0px)',
+              }}
               transition={{ duration: 0.6 }}
-              className="font-display max-w-2xl text-4xl leading-tight md:text-6xl"
+              className="font-display max-w-3xl text-3xl leading-[1.08] tracking-tight sm:text-4xl md:text-5xl lg:text-6xl"
             >
               Projects in{' '}
               <span className="italic text-primary">{svc.title}</span>
             </motion.h2>
           </div>
-          <div className="max-w-sm text-sm text-muted-foreground">
+
+          <div className="w-full max-w-xl text-sm leading-relaxed text-muted-foreground lg:max-w-sm">
             {svc.description}
           </div>
         </div>
 
+        {/* Projects */}
         {loading ? (
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {Array.from({ length: Math.max(2, projects.length) }).map(
-              (_, i) => (
-                <div
-                  key={i}
-                  className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-border bg-card/70"
-                >
-                  <div className="absolute inset-0 shimmer-line opacity-40" />
-                </div>
-              ),
-            )}
-            <div className="col-span-full mt-4 flex items-center justify-center gap-3 text-xs uppercase tracking-[0.3em] text-muted-foreground">
-              <span className="preloader-orbit inline-block h-3 w-3 rounded-full border-2 border-transparent border-t-primary border-r-primary/40" />
+          <div className="mt-10 grid grid-cols-1 gap-4 sm:mt-12 sm:grid-cols-2 lg:grid-cols-3">
+            {Array.from({
+              length: Math.max(2, projects.length),
+            }).map((_, i) => (
+              <div
+                key={i}
+                className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-border bg-card/70 sm:rounded-3xl"
+              >
+                <div className="absolute inset-0 shimmer-line opacity-40" />
+              </div>
+            ))}
+
+            <div className="col-span-full mt-3 flex items-center justify-center gap-3 text-center text-[10px] uppercase tracking-[0.2em] text-muted-foreground sm:text-xs sm:tracking-[0.3em]">
+              <span className="preloader-orbit inline-block h-3 w-3 shrink-0 rounded-full border-2 border-transparent border-r-primary/40 border-t-primary" />
               Loading {svc.title.toLowerCase()} projects
             </div>
           </div>
-        ) : (
+        ) : projects.length > 0 ? (
           <motion.div
             key={svc.id}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, staggerChildren: 0.08 }}
-            className="mt-14 grid gap-6 md:grid-cols-2"
+            initial={{
+              opacity: 0,
+              y: 20,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
+            transition={{
+              duration: 0.5,
+              staggerChildren: 0.08,
+            }}
+            className="mt-10 grid w-full min-w-0 grid-cols-1 gap-5 sm:mt-12 sm:grid-cols-2 sm:gap-6 lg:grid-cols-2 xl:grid-cols-3"
           >
             {projects.map((p, i) => (
               <ProjectCard key={p.id} project={p} index={i} onOpen={onOpen} />
             ))}
           </motion.div>
+        ) : (
+          <div className="mt-10 rounded-2xl border border-dashed border-border p-10 text-center text-sm text-muted-foreground sm:mt-12 sm:rounded-3xl">
+            No projects available for this service yet.
+          </div>
         )}
       </div>
     </motion.section>
@@ -1192,43 +1301,129 @@ function ProjectCard({
 }) {
   return (
     <motion.button
+      type="button"
       onClick={() => onOpen(project)}
       data-cursor="Open"
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.15 }}
-      transition={{ duration: 0.4, delay: index * 0.04, ease: 'easeOut' }}
-      whileHover={{ y: -3 }}
-      className="group relative overflow-hidden rounded-3xl bg-card text-left shadow-[var(--shadow-soft)] transition-shadow hover:shadow-[var(--shadow-lift)]"
+      initial={{
+        opacity: 0,
+        y: 30,
+      }}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+      }}
+      viewport={{
+        once: true,
+        amount: 0.15,
+      }}
+      transition={{
+        duration: 0.4,
+        delay: index * 0.04,
+        ease: 'easeOut',
+      }}
+      whileHover={{
+        y: -4,
+      }}
+      className="
+        group
+        relative
+        w-full
+        min-w-0
+        overflow-hidden
+        rounded-2xl
+        bg-card
+        text-left
+        shadow-[var(--shadow-soft)]
+        transition-shadow
+        hover:shadow-[var(--shadow-lift)]
+        sm:rounded-3xl
+      "
     >
-      <div className="relative aspect-[4/3] overflow-hidden">
+      {/* Image */}
+      <div className="relative w-full overflow-hidden bg-secondary/30">
         <motion.img
           src={project.cover}
           alt={project.title}
           loading="lazy"
-          width={1200}
-          height={900}
-          className="h-full w-full object-cover p-1"
-          initial={{ scale: 1.02 }}
-          whileHover={{ scale: 1.06 }}
-          transition={{ duration: 0.35, ease: 'easeOut' }}
+          decoding="async"
+          draggable={false}
+          className="
+            block
+            h-auto
+            w-full
+            max-w-full
+            object-contain
+            transition-transform
+            duration-500
+            ease-out
+            group-hover:scale-[1.03]
+          "
+          initial={{
+            scale: 1.01,
+          }}
         />
-        <div className="absolute inset-x-4 bottom-4 flex items-center justify-between rounded-2xl bg-background/90 px-4 py-3 backdrop-blur">
-          <div>
-            <div className="font-display text-base font-semibold">
+
+        {/* Image overlay */}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60" />
+
+        {/* Open icon */}
+        <span
+          className="
+            absolute
+            right-3
+            top-3
+            inline-flex
+            h-9
+            w-9
+            items-center
+            justify-center
+            rounded-full
+            bg-background/90
+            text-foreground
+            shadow-lg
+            backdrop-blur
+            transition-all
+            duration-300
+            group-hover:rotate-45
+            group-hover:bg-primary
+            group-hover:text-primary-foreground
+            sm:right-4
+            sm:top-4
+            sm:h-10
+            sm:w-10
+          "
+        >
+          <ArrowUpRight className="h-4 w-4 sm:h-5 sm:w-5" />
+        </span>
+      </div>
+
+      {/* Content */}
+      <div className="p-4 sm:p-5">
+        <div className="flex items-start justify-between gap-4">
+          <div className="min-w-0 flex-1">
+            <h3 className="font-display text-lg font-semibold leading-tight sm:text-xl">
               {project.title}
-            </div>
-            <div className="text-xs text-muted-foreground">
-              {project.services.join(' · ')}
+            </h3>
+
+            <div className="mt-2 flex flex-wrap gap-x-2 gap-y-1 text-[10px] uppercase tracking-wider text-muted-foreground sm:text-xs">
+              {project.services.map((service, i) => (
+                <span key={service} className="inline-flex items-center">
+                  {i > 0 && <span className="mr-2 text-primary/60">·</span>}
+                  {service}
+                </span>
+              ))}
             </div>
           </div>
-          <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-primary text-primary-foreground transition-transform group-hover:rotate-45">
-            <ArrowUpRight className="h-4 w-4" />
-          </span>
         </div>
-      </div>
-      <div className="p-4">
-        <p className="text-sm text-muted-foreground">{project.description}</p>
+
+        <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-muted-foreground">
+          {project.description}
+        </p>
+
+        <div className="mt-4 flex items-center gap-2 text-xs font-medium text-primary">
+          View project
+          <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+        </div>
       </div>
     </motion.button>
   )
@@ -1277,15 +1472,15 @@ function ProjectModal({
 
         <div className="grid gap-0 md:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)]">
           <div className="bg-secondary/60">
-            {project.images.map((src, i) => (
+            {project.images.map((i) => (
               <img
                 key={i}
-                src={src}
-                alt={`${project.title} preview ${i + 1}`}
+                src={project.cover}
+                alt={project.title}
                 loading="lazy"
-                width={1200}
-                height={900}
-                className="h-auto w-full object-cover"
+                decoding="async"
+                draggable={false}
+                className="block h-auto w-full max-w-full object-contain"
               />
             ))}
           </div>
